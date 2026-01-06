@@ -1,16 +1,90 @@
-# React + Vite
+# Muse Closet AI 🎀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> **Your Personal AI-Powered Digital Stylist & Wardrobe Manager**
 
-Currently, two official plugins are available:
+Muse Closet AI is a sophisticated digital wardrobe application that helps you organize your clothes, discover new outfit combinations, and get personalized styling advice using advanced AI. Whether you're planning a trip, looking for a daily outfit, or shopping for the latest trends, Muse has you covered.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## React Compiler
+### 👗 Digital Wardrobe
+- **Digitize Your Closet**: Upload photos of your clothes to create a virtual inventory.
+- **Categorization**: Automatically organizes items into Tops, Bottoms, Shoes, and Accessories.
+- **Management**: Easily add or remove items to keep your digital closet up to date.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🤖 AI Styling Assistant
+- **Trip Packer**: Planning a vacation? Tell Muse your destination and duration, and it will generate a complete packing list based on your own wardrobe and the destination's vibe/weather.
+- **Muse Oracle**: A chat-based AI stylist ready to answer your fashion questions, give advice on trends, or help you decide what to wear.
+- **Smart Outfit Generation**: Get AI-curated outfit suggestions suited for your specific style and occasions.
 
-## Expanding the ESLint configuration
+### 🛍️ Curated Shopping
+- **Shop the Look**: Discover trending aesthetics (e.g., "Old Money", "Streetwear", "Indie Sleaze") with curated collections.
+- **Myntra Integration**: Direct links to shop for missing pieces or trending items on Myntra based on your gender and style preferences.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🎨 Modern & Aesthetic UI
+- **Premium Design**: A beautiful, responsive interface featuring glassmorphism, smooth animations, and a rich color palette.
+- **Cross-Platform**: Designed to work seamlessly on both Web and Mobile devices.
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React 19, Vite
+- **Styling**: Tailwind CSS, PostCSS, Lucide React (Icons)
+- **Backend / Services**: Firebase (Auth, Firestore), Google Gemini API (AI features)
+- **Mobile**: Capacitor (for Android/iOS builds)
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v18 or higher)
+- npm or yarn
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/muse-closet-ai.git
+   cd muse-closet-ai
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Configure Environment**
+   - Create a `.env` file or update the configuration in `src/App.jsx` with your API keys:
+     - **Firebase Config**: Update the `firebaseConfig` object.
+     - **Gemini API Key**: Set your Google Gemini API key.
+
+4. **Run the Development Server**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
+
+## 📱 Mobile Build (Android)
+
+To build and run the app on an Android device/emulator:
+
+1. **Sync Capacitor**
+   ```bash
+   npx cap sync
+   ```
+
+2. **Open Android Studio**
+   ```bash
+   npx cap open android
+   ```
+
+3. **Run from Android Studio**: Use the "Run" button to deploy to your connected device or emulator.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please run the linter before submitting a pull request:
+
+```bash
+npm run lint
+```
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
