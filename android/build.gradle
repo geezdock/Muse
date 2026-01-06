@@ -1,5 +1,20 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+import org.gradle.util.GradleVersion
+
+def currentJava = JavaVersion.current()
+if (currentJava < JavaVersion.VERSION_17) {
+    throw new GradleException("Android build requires Java 17+ (AGP 8.x). Current Java: ${System.getProperty('java.version')}. In Android Studio: Settings > Build Tools > Gradle > Gradle JDK = Embedded JDK / JDK 17.")
+}
+
+def expectedGradle = GradleVersion.version('8.2.1')
+def currentGradle = GradleVersion.current()
+if (currentGradle != expectedGradle) {
+    throw new GradleException("This project must be built with the Gradle Wrapper (${expectedGradle}). You are running Gradle ${currentGradle}.\n" +
+            "Fix: in Android Studio > Settings > Build, Execution, Deployment > Gradle > 'Use Gradle from' = 'Gradle wrapper'.\n" +
+            "Or from terminal, run from the android/ folder: .\\gradlew :app:assembleRelease")
+}
+
 buildscript {
     
     repositories {
@@ -7,12 +22,24 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.13.0'
-        classpath 'com.google.gms:google-services:4.4.4'
+        classpath 'com.android.tools.build:gradle:8.2.1'
+        classpath 'com.google.gms:google-services:4.4.0'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
+}
+
+def expectedAgp = '8.2.1'
+try {
+    def actualAgp = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION
+    if (actualAgp != expectedAgp) {
+        throw new GradleException("Android Gradle Plugin version mismatch. Expected AGP ${expectedAgp} but found ${actualAgp}.\n" +
+                "This mismatch commonly triggers Capacitor variant errors like AgpVersionAttr=${actualAgp} and 'No variants exist'.\n" +
+                "Fix: revert AGP to ${expectedAgp} in android/build.gradle and ensure Android Studio uses the Gradle wrapper.")
+    }
+} catch (Throwable ignored) {
+    // If AGP isn't on the classpath yet (unexpected), don't block configuration here.
 }
 
 apply from: "variables.gradle"

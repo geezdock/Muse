@@ -70,12 +70,31 @@ To build and run the app on an Android device/emulator:
    npx cap sync
    ```
 
-2. **Open Android Studio**
+2. **Build an Android release APK (recommended, deterministic)**
+
+   This repo expects:
+   - Gradle Wrapper `8.2.1`
+   - Android Gradle Plugin `8.2.1`
+   - Java 17+
+
+   On Windows, run:
+   ```bash
+   npm run android:release
+   ```
+
+   If you ever see errors like `AgpVersionAttr=8.13.2` / `No variants exist` for Capacitor modules, it usually means Android Studio is building with a different Gradle/AGP than this repo expects.
+
+3. **Open Android Studio**
    ```bash
    npx cap open android
    ```
 
-3. **Run from Android Studio**: Use the "Run" button to deploy to your connected device or emulator.
+4. **Android Studio settings (important)**
+   - Settings → Build, Execution, Deployment → Gradle
+     - **Use Gradle from**: **Gradle wrapper**
+     - **Gradle JDK**: **JDK 17** (you can point it to `android/.jdk/jdk-17` after running the script once)
+
+5. **Run from Android Studio**: Use the "Run" button to deploy to your connected device or emulator.
 
 ## 🤝 Contributing
 

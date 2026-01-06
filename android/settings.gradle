@@ -1,3 +1,21 @@
+import org.gradle.util.GradleVersion
+
+def currentJava = JavaVersion.current()
+if (currentJava < JavaVersion.VERSION_17) {
+	throw new GradleException("Android build requires Java 17+ (AGP 8.x). Current Java: ${System.getProperty('java.version')}. Configure Android Studio Gradle JDK to JDK 17 (Embedded JDK recommended) or set JAVA_HOME to a JDK 17 installation.")
+}
+
+def expectedGradle = GradleVersion.version('8.2.1')
+def currentGradle = GradleVersion.current()
+
+logger.lifecycle("Muse Android build toolchain: settingsDir=${settingsDir} | gradle=${currentGradle} | java=${System.getProperty('java.version')}")
+
+if (currentGradle != expectedGradle) {
+	throw new GradleException("This project must be built with the Gradle Wrapper (${expectedGradle}). You are running Gradle ${currentGradle}.\n" +
+			"Fix: in Android Studio > Settings > Build, Execution, Deployment > Gradle > 'Use Gradle from' = 'Gradle wrapper'.\n" +
+			"Or from terminal, run from the android/ folder: .\\gradlew :app:assembleRelease")
+}
+
 include ':app'
 include ':capacitor-cordova-android-plugins'
 project(':capacitor-cordova-android-plugins').projectDir = new File('./capacitor-cordova-android-plugins/')

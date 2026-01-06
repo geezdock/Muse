@@ -1,0 +1,8 @@
+{
+  "name": "muse-android",
+  "private": true,
+  "scripts": {
+    "android:gradle:version": "powershell -ExecutionPolicy Bypass -File .\\ensure-jdk17.ps1 --version",
+    "android:release": "powershell -ExecutionPolicy Bypass -File .\\ensure-jdk17.ps1 :app:assembleRelease"
+  }
+}

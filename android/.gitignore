@@ -23,6 +23,9 @@ out/
 .gradle/
 build/
 
+# Local JDK for builds (downloaded by ensure-jdk17.ps1)
+.jdk/
+
 # Local configuration file (sdk path, etc)
 local.properties
 
